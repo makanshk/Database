@@ -1,0 +1,376 @@
+object Form1: TForm1
+  Left = 287
+  Top = 588
+  Align = alClient
+  BorderStyle = bsDialog
+  ClientHeight = 799
+  ClientWidth = 1108
+  Color = clWindow
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 412
+    Height = 1000
+    Color = clWindow
+    TabOrder = 0
+    Visible = False
+    object Label1: TLabel
+      Left = 20
+      Top = 8
+      Width = 367
+      Height = 95
+      Caption = 'DATAbase'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -67
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Button1: TButton
+      Left = 0
+      Top = 104
+      Width = 411
+      Height = 73
+      Caption = #1057#1086#1079#1076#1072#1090#1100' '#1090#1072#1073#1083#1080#1094#1091
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 0
+      Top = 176
+      Width = 411
+      Height = 73
+      Caption = #1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1089#1090#1088#1086#1082#1080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      OnClick = Button2Click
+    end
+    object Button3: TButton
+      Left = 0
+      Top = 248
+      Width = 411
+      Height = 73
+      Caption = #1056#1077#1076#1072#1082#1090#1080#1088#1086#1074#1072#1085#1080#1077' '#1089#1090#1088#1086#1082#1080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = Button3Click
+    end
+    object Button4: TButton
+      Left = 0
+      Top = 320
+      Width = 411
+      Height = 73
+      Caption = #1057#1086#1088#1090#1080#1088#1086#1074#1082#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = Button4Click
+    end
+    object Button5: TButton
+      Left = 0
+      Top = 392
+      Width = 411
+      Height = 73
+      Caption = #1069#1082#1089#1087#1086#1088#1090' '#1076#1072#1085#1085#1099#1093' '#1074' .txt '#1092#1072#1081#1083
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      OnClick = Button5Click
+    end
+    object Button6: TButton
+      Left = 0
+      Top = 464
+      Width = 411
+      Height = 73
+      Caption = #1048#1084#1087#1086#1088#1090' '#1076#1072#1085#1085#1099#1093' '#1080#1079' .txt '#1092#1072#1081#1083#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      OnClick = Button6Click
+    end
+    object Button7: TButton
+      Left = 0
+      Top = 640
+      Width = 411
+      Height = 73
+      Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      OnClick = Button7Click
+    end
+    object Button8: TButton
+      Left = 0
+      Top = 712
+      Width = 411
+      Height = 73
+      Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+      OnClick = Button8Click
+    end
+    object Button10: TButton
+      Left = 1
+      Top = 536
+      Width = 411
+      Height = 73
+      Caption = #1059#1076#1072#1083#1077#1085#1080#1077' '#1080#1079' '#1090#1072#1073#1083#1080#1094#1099
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+      OnClick = Button10Click
+    end
+  end
+  object Panel2: TPanel
+    Left = 409
+    Top = 0
+    Width = 1128
+    Height = 105
+    Color = clWindow
+    TabOrder = 1
+    Visible = False
+    object Panel3: TPanel
+      Left = 768
+      Top = 24
+      Width = 337
+      Height = 57
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      object Edit3: TEdit
+        Left = 88
+        Top = 8
+        Width = 241
+        Height = 40
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Button9: TButton
+        Left = 8
+        Top = 8
+        Width = 75
+        Height = 39
+        Caption = #1055#1086#1080#1089#1082
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = Button9Click
+      end
+    end
+    object BitBtn1: TBitBtn
+      Left = 704
+      Top = 32
+      Width = 49
+      Height = 41
+      Cursor = crHandPoint
+      Caption = '+'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -53
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
+      OnClick = BitBtn1Click
+    end
+    object BitBtn2: TBitBtn
+      Left = 648
+      Top = 32
+      Width = 49
+      Height = 41
+      Cursor = crHandPoint
+      Caption = '-'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -53
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      OnClick = BitBtn2Click
+    end
+    object Panel6: TPanel
+      Left = 40
+      Top = 24
+      Width = 185
+      Height = 57
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      Visible = False
+      object DeleteEdit: TEdit
+        Left = 8
+        Top = 11
+        Width = 41
+        Height = 36
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -25
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+      object BitBtn3: TBitBtn
+        Left = 56
+        Top = 8
+        Width = 121
+        Height = 41
+        Caption = #1059#1076#1072#1083#1077#1085#1080#1077
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -20
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = BitBtn3Click
+      end
+    end
+  end
+  object ComboBox1: TComboBox
+    Left = 1216
+    Top = 712
+    Width = 289
+    Height = 40
+    Cursor = crHandPoint
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 32
+    ParentFont = False
+    TabOrder = 2
+    Text = 'Default'
+    OnChange = ComboBox1Change
+    Items.Strings = (
+      'Clear white'
+      'Great gray'
+      'Ice cream'
+      'Default')
+  end
+  object ComboBox2: TComboBox
+    Left = 1240
+    Top = 768
+    Width = 289
+    Height = 40
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Style = []
+    ItemHeight = 32
+    ParentFont = False
+    TabOrder = 3
+    Text = #1056#1091#1089#1089#1082#1080#1081
+    OnChange = ComboBox2Change
+    Items.Strings = (
+      #1056#1091#1089#1089#1082#1080#1081
+      'English')
+  end
+  object StringGrid1: TStringGrid
+    Left = 409
+    Top = 104
+    Width = 1127
+    Height = 713
+    DefaultColWidth = 222
+    DefaultRowHeight = 69
+    FixedColor = clWindow
+    FixedCols = 0
+    RowCount = 1
+    FixedRows = 0
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'Arial'
+    Font.Style = []
+    GridLineWidth = 3
+    ParentFont = False
+    TabOrder = 4
+    Visible = False
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = 'txt'
+    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1077' '#1092#1072#1081#1083#1099'|*.txt;*|'#1042#1089#1077' '#1092#1072#1081#1083#1099'|*.*'
+    Left = 328
+    Top = 8
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = #1058#1077#1082#1089#1090#1086#1074#1099#1077' '#1092#1072#1081#1083#1099'|*.txt;*|'#1042#1089#1077' '#1092#1072#1081#1083#1099'|*.*'
+    Left = 360
+    Top = 8
+  end
+end

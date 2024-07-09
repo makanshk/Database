@@ -1,0 +1,918 @@
+#include <vcl.h>
+#pragma hdrstop
+#include "main.h"
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+
+__fastcall TForm1::TForm1(TComponent* Owner)
+        : TForm(Owner)
+{
+        Form1->Color = (TColor) RGB(173,194,249);
+
+        Panel = new TPanel(this);
+        Panel->Parent = Form1;
+        Panel->Visible = true;
+        Panel->Width = 500;
+        Panel->Height = 600;
+        Panel->Left = 510;
+        Panel->Top = 95;
+        Panel->Color = clWhite;
+
+        Name = new TLabel(this);
+        Name->Parent = Panel;
+        Name->Caption = "Name:";
+        Name->Font->Name = "Calibri";
+        Name->Font->Size = 25;
+        Name->Left = 94;
+        Name->Top = 180;
+        Name->Font->Color = (TColor) RGB(56,63,79);
+
+        Password = new TLabel(this);
+        Password->Parent = Panel;
+        Password->Caption = "Password:";
+        Password->Font->Name = "Calibri";
+        Password->Font->Size = 25;
+        Password->Left = 94;
+        Password->Top = 310;
+        Password->Font->Color = (TColor) RGB(56,63,79);
+
+        Edit1 = new TEdit(this);
+        Edit1->Parent = Panel;
+        Edit1->Left = 94;
+        Edit1->Top = 220;
+        Edit1->Font->Size = 25;
+        Edit1->Width= 320;
+        Edit1->OnChange = EditChange; // обработчик событий
+        Edit1->Font->Name = "Arial";
+        Edit1->Color = (TColor) RGB(238,245,255);
+
+        Edit2 = new TEdit(this);
+        Edit2->Parent = Panel;
+        Edit2->Left = 94;
+        Edit2->Top = 350;
+        Edit2->Width= 320;
+        Edit2->Font->Size = 25;
+        Edit2->OnChange = EditChange;
+        Edit2->Font->Name = "Arial";
+        Edit2->Color = (TColor) RGB(238,245,255);
+
+        Label = new TLabel(this);
+        Label->Parent = Panel;
+        Label->Left = 175;
+        Label->Top = 70;
+        Label->Caption = "Login";
+        Label->Font->Size = 40;
+        Label->Font->Name = "Arial Black";
+        Label->Font->Color = (TColor) RGB(56,63,79);
+
+        ListBox_rus = new TListBox(this);
+        ListBox_rus->Parent = Form1;
+        ListBox_rus->Height = 400;
+        ListBox_rus->Width = 1150;
+        ListBox_rus->Left = 420;
+        ListBox_rus->Top = 110;
+        ListBox_rus->Font->Size = 16;
+        ListBox_rus->Font->Name = "Arial";
+        ListBox_rus->BorderStyle = bsNone;
+        ListBox_rus->Items->Add("О Программе:");
+        ListBox_rus->Items->Add("");
+        ListBox_rus->Items->Add("DATAbase - программное решение, разработанное с целью оптимизации рабочих процессов  и  повышения");
+        ListBox_rus->Items->Add("эффективности работы сотрудников страховой медицинской компании. Программа,  в  первую очередь, ");
+        ListBox_rus->Items->Add("предназначена для облегчения доступа к информации. Основываясь на  опыте  области информационных");
+        ListBox_rus->Items->Add("технологий, данная программа направлена на совершенствование рабочих и лучших практиках в процессов");
+        ListBox_rus->Items->Add("и повышение конкурентоспособности страховой медицинской компании в современном рыночном окружении.");
+        ListBox_rus->Visible = false;
+
+        ListBox_eng = new TListBox(this);
+        ListBox_eng->Parent = Form1;
+        ListBox_eng->Height = 250;
+        ListBox_eng->Width = 1150;
+        ListBox_eng->Left = 420;
+        ListBox_eng->Top = 110;
+        ListBox_eng->Font->Size = 16;
+        ListBox_eng->Font->Name = "Arial";
+        ListBox_eng->BorderStyle = bsNone;
+        ListBox_eng->Items->Add("About the Program: ");
+        ListBox_eng->Items->Add("");
+        ListBox_eng->Items->Add("DATAbase is a software solution designed to optimize work processes and improve the efficiency");
+        ListBox_eng->Items->Add("of employees of an insurance medical company. The program is primarily designed to facilitate");
+        ListBox_eng->Items->Add("access to information. Based on the experience in the field of information technology, this program");
+        ListBox_eng->Items->Add("is aimed at improving the working and best practices in the processes and increasing the competitiveness");
+        ListBox_eng->Items->Add("of an insurance medical company in a modern market environment.");
+        ListBox_eng->Visible = false;
+
+        Label3 = new TLabel(this);
+        Label3->Parent = Form1;
+        Label3->Caption = "Настройки";
+        Label3->Font->Size = 16;
+        Label3->Font->Name = "Arial";
+        Label3->Left = 420;
+        Label3->Top = 110;
+        Label3->Visible = false;
+
+        Panel4 = new TPanel(this);
+        Panel4->Parent = Form1;
+        Panel4->Height = 705;
+        Panel4->Width = 1150;
+        Panel4->Left = 413;
+        Panel4->Top = 140;
+        Panel4->Visible = false;
+        Panel4->Color = clWindow;
+
+        Label4 = new TLabel(this);
+        Label4->Parent = Panel4;
+        Label4->Caption = "Темы";
+        Label4->Font->Size = 18;
+        Label4->Font->Name = "Arial";
+        Label4->Left = 50;
+        Label4->Top = 55;
+
+        Label5 = new TLabel(this);
+        Label5->Parent = Panel4;
+        Label5->Caption = "Язык";
+        Label5->Font->Size = 18;
+        Label5->Font->Name = "Arial";
+        Label5->Left = 50;
+        Label5->Top = 255;
+
+        ComboBox1->Parent = Panel4;
+        ComboBox1->Left = 180;
+        ComboBox1->Top = 50;
+
+        ComboBox2->Parent = Panel4;
+        ComboBox2->Left = 180;
+        ComboBox2->Top = 250;
+}
+
+void __fastcall TForm1::EditChange(TObject *Sender)
+{
+        TEdit *Edit = dynamic_cast<TEdit*>(Sender);
+
+        if (Edit)
+        {
+                if (Edit1->Text == "User" && Edit2->Text == "123")
+                {
+                        Form1->Color = clWindow;
+                        Panel->Visible = false;
+                        Panel1->Visible = true;
+                        Panel1->Color = (TColor) RGB(173,194,249);
+                        Panel2->Visible = true;
+                        Panel2->Color = (TColor) RGB(173,194,249);
+                        Label1->Font->Color = (TColor) RGB(56,63,79);
+                }
+        }
+}
+
+void __fastcall TForm1::Button8Click(TObject *Sender)
+{
+        if (Label3->Visible == true || Panel4->Visible == true || StringGrid1->Visible == true || BitBtn1->Visible == true || Panel6->Visible == true)
+        {
+                Label3->Visible = false;
+                Panel4->Visible = false;
+                StringGrid1->Visible = false;
+                BitBtn1->Visible = false;
+                BitBtn2->Visible = false;
+                Panel6->Visible = false;
+        }
+
+        ListBox_rus->Visible = true;
+        Panel6->Visible = false;
+}
+
+void __fastcall TForm1::Button7Click(TObject *Sender)
+{
+        if (ListBox_rus->Visible == true || StringGrid1->Visible == true || BitBtn1->Visible == true || Panel6->Visible == true)
+        {
+                ListBox_rus->Visible = false;
+                StringGrid1->Visible = false;
+                BitBtn1->Visible = false;
+                BitBtn2->Visible = false;
+                Panel6->Visible = false;
+        }
+
+        Label3->Visible = true;
+        Panel4->Visible = true;
+        Panel6->Visible = false;
+}
+
+void __fastcall TForm1::ComboBox1Change(TObject *Sender)
+{
+        if (ComboBox1->Text == "Default")
+        {
+                Panel1->Color = (TColor) RGB(173,194,249);
+                Panel2->Color = (TColor) RGB(173,194,249);
+                Label1->Font->Color = clBlack;
+        }
+
+        if (ComboBox1->Text == "Clear white")
+        {
+                Panel1->Color = clWhite;
+                Panel2->Color = clWhite;
+                Label1->Font->Color = clBlack;
+        }
+
+        if (ComboBox1->Text == "Great gray")
+        {
+                Panel1->Color = (TColor) RGB(123,127,138);
+                Panel2->Color = (TColor) RGB(123,127,138);
+                Label1->Font->Color = clWhite;
+        }
+
+        if (ComboBox1->Text == "Ice cream")
+        {
+                Panel1->Color = clCream;
+                Panel2->Color = clCream;
+                Label1->Font->Color = clBlack;
+        }
+}
+
+void __fastcall TForm1::ComboBox2Change(TObject *Sender)
+{
+        if (ComboBox2->Text == "Русский")
+        {
+                Button1->Caption = "Вывод таблицы";
+                Button2->Caption = "Добавление строки в таблицу";
+                Button3->Caption = "Редактирование строки";
+                Button4->Caption = "Сортировка";
+                Button5->Caption = "Сохранение данных в .txt файл";
+                Button6->Caption = "Импорт данных из .txt файла";
+                Button7->Caption = "Настройки";
+                Button8->Caption = "О программе";
+                Button9->Caption = "Поиск";
+                Button10->Caption = "Удаление из таблицы";
+                Label3->Caption = "Настройки";
+                Label4->Caption = "Темы";
+                Label5->Caption = "Язык";
+
+                ListBox_rus->Visible = true;
+        }
+
+        if (ComboBox2->Text == "English")
+        {
+                Button1->Caption = "Table output";
+                Button2->Caption = "Adding a line to a table";
+                Button3->Caption = "Editing a line";
+                Button4->Caption = "Sorting";
+                Button5->Caption = "Saving to a .txt file";
+                Button6->Caption = "Import from .txt file";
+                Button7->Caption = "Settings";
+                Button8->Caption = "About the program";
+                Button9->Caption = "Search";
+                Button10->Caption = "Delete from table";
+                Label3->Caption = "Settings";
+                Label4->Caption = "Decor";
+                Label5->Caption = "Language";
+
+                ListBox_eng->Visible = true;
+        }
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+        if (ListBox_rus->Visible == true || ListBox_eng->Visible == true || Label3->Visible == true || Panel4->Visible == false || Panel6->Visible == true)
+        {
+                ListBox_rus->Visible = false;
+                ListBox_eng->Visible = false;
+                Label3->Visible = false;
+                Panel4->Visible = false;
+                BitBtn1->Visible = true;
+                BitBtn2->Visible = true;
+                Panel6->Visible = false;
+
+        }
+        StringGrid1->Visible = true;
+
+        StringGrid1->Cells[0][0] = "ФИО";
+        StringGrid1->Cells[1][0] = "Дата рождения";
+        StringGrid1->Cells[2][0] = "Mail";
+        StringGrid1->Cells[3][0] = "№ телефона";
+        StringGrid1->Cells[4][0] = "№ строки";
+}
+
+void __fastcall TForm1::BitBtn1Click(TObject *Sender)
+{
+        StringGrid1->Font->Size = 18;
+}
+
+void __fastcall TForm1::BitBtn2Click(TObject *Sender)
+{
+        StringGrid1->Font->Size = 15;
+}
+
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+        if (Panel6->Visible == true)
+        {
+                Panel6->Visible = false;
+        }
+
+        if (StringGrid1->Visible == true)
+        {
+                Form2 = new TForm(this);
+                Form2->Show();
+                Form2->BorderStyle = bsDialog;
+                Form2->Caption = "Добавление строки";
+                Form2->Width = 520;
+                Form2->Height = 300;
+                Form2->Left = 450;
+                Form2->Top = 30;
+                Form2->Color = clWindow;
+                Form2->Enabled = true;
+
+                Label6 = new TLabel(this);
+                Label6->Parent = Form2;
+                Label6->Font->Name = "Arial Black";
+                Label6->Caption = "ФИО";
+                Label6->Font->Size = 18;
+                Label6->Left = 10;
+                Label6->Top = 10;
+
+                Edit4 = new TEdit(this);
+                Edit4->Parent = Form2;
+                Edit4->Font->Name = "Arial";
+                Edit4->Width = 400;
+                Edit4->Height = 18;
+                Edit4->Left = 80;
+                Edit4->Top = 8;
+                Edit4->Font->Size = 18;
+                Edit4->Enabled = true;
+                AnsiString name1 = Edit4->Text;
+
+                Label7 = new TLabel(this);
+                Label7->Parent = Form2;
+                Label7->Font->Name = "Arial Black";
+                Label7->Caption = "Дата";
+                Label7->Font->Size = 18;
+                Label7->Left = 10;
+                Label7->Top = 57;
+
+                Edit5 = new TEdit(this);
+                Edit5->Parent = Form2;
+                Edit5->Font->Name = "Arial";
+                Edit5->Width = 400;
+                Edit5->Height = 18;
+                Edit5->Left = 80;
+                Edit5->Top = 55;
+                Edit5->Font->Size = 18;
+                Edit5->Enabled = true;
+                AnsiString name2 = Edit5->Text;
+
+                Label8 = new TLabel(this);
+                Label8->Parent = Form2;
+                Label8->Font->Name = "Arial Black";
+                Label8->Caption = "Mail";
+                Label8->Font->Size = 18;
+                Label8->Left = 10;
+                Label8->Top = 104;
+
+                Edit6 = new TEdit(this);
+                Edit6->Parent = Form2;
+                Edit6->Font->Name = "Arial";
+                Edit6->Width = 400;
+                Edit6->Height = 18;
+                Edit6->Left = 80;
+                Edit6->Top = 103;
+                Edit6->Font->Size = 18;
+                Edit6->Enabled = true;
+                AnsiString name3 = Edit5->Text;
+
+                Label9 = new TLabel(this);
+                Label9->Parent = Form2;
+                Label9->Font->Name = "Arial Black";
+                Label9->Caption = "№ телефона";
+                Label9->Font->Size = 18;
+                Label9->Left = 10;
+                Label9->Top = 151;
+
+                Edit7 = new TEdit(this);
+                Edit7->Parent = Form2;
+                Edit7->Font->Name = "Arial";
+                Edit7->Width = 290;
+                Edit7->Height = 18;
+                Edit7->Left = 190;
+                Edit7->Top = 150;
+                Edit7->Font->Size = 18;
+                AnsiString name4 = Edit5->Text;
+
+                Button11 = new TBitBtn(this);
+                Button11->Parent = Form2;
+                Button11->Font->Name = "Arial Black";
+                Button11->Font->Size = 18;
+                Button11->Caption = "ОК";
+                Button11->Height = 45;
+                Button11->Width = 150;
+                Button11->Left = 330;
+                Button11->Top = 200;
+                Button11->OnClick = Button11Click;
+        }
+}
+
+void __fastcall TForm1::Button11Click(TObject *Sender)
+{
+        AnsiString fullName = Edit4->Text;
+        AnsiString dateBirth = Edit5->Text;
+        AnsiString mail = Edit6->Text;
+        AnsiString phone = Edit7->Text;
+        int row = StringGrid1->RowCount;
+        StringGrid1->RowCount = row + 1;
+        StringGrid1->Cells[0][row] = fullName;
+        StringGrid1->Cells[0+1][row] = dateBirth;
+        StringGrid1->Cells[0+2][row] = mail;
+        StringGrid1->Cells[0+3][row] = phone;
+        StringGrid1->Cells[0+4][row] = StringGrid1->RowCount-1;
+
+        Form2->Close();
+}
+
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+        if (Panel6->Visible == true)
+        {
+                Panel6->Visible = false;
+        }
+
+        if (StringGrid1->Visible == true)
+        {
+                Form3 = new TForm(this);
+                Form3->Show();
+                Form3->BorderStyle = bsDialog;
+                Form3->Caption = "Редактирование строки";
+                Form3->Width = 520;
+                Form3->Height = 340;
+                Form3->Left = 450;
+                Form3->Top = 30;
+                Form3->Color = clWindow;
+                Form3->Enabled = true;
+
+                Panel5 = new TPanel(this);
+                Panel5->Parent = Form3;
+                Panel5->Visible = true;
+                Panel5->Color = clWindow;
+                Panel5->Width = 530;
+                Panel5->Height = 243;
+                Panel5->Left = 0;
+                Panel5->Top = 0;
+
+                Label6 = new TLabel(this);
+                Label6->Parent = Panel5;
+                Label6->Font->Name = "Arial Black";
+                Label6->Caption = "ФИО";
+                Label6->Font->Size = 18;
+                Label6->Left = 10;
+                Label6->Top = 10;
+
+                EditEdit4 = new TEdit(this);
+                EditEdit4->Parent = Panel5;
+                EditEdit4->Font->Name = "Arial";
+                EditEdit4->Width = 400;
+                EditEdit4->Height = 18;
+                EditEdit4->Left = 80;
+                EditEdit4->Top = 8;
+                EditEdit4->Font->Size = 18;
+                EditEdit4->Enabled = true;
+
+                Label7 = new TLabel(this);
+                Label7->Parent = Panel5;
+                Label7->Font->Name = "Arial Black";
+                Label7->Caption = "Дата";
+                Label7->Font->Size = 18;
+                Label7->Left = 10;
+                Label7->Top = 57;
+
+                EditEdit5 = new TEdit(this);
+                EditEdit5->Parent = Panel5;
+                EditEdit5->Font->Name = "Arial";
+                EditEdit5->Width = 400;
+                EditEdit5->Height = 18;
+                EditEdit5->Left = 80;
+                EditEdit5->Top = 55;
+                EditEdit5->Font->Size = 18;
+                EditEdit5->Enabled = true;
+
+                Label8 = new TLabel(this);
+                Label8->Parent = Panel5;
+                Label8->Font->Name = "Arial Black";
+                Label8->Caption = "Mail";
+                Label8->Font->Size = 18;
+                Label8->Left = 10;
+                Label8->Top = 104;
+
+                EditEdit6 = new TEdit(this);
+                EditEdit6->Parent = Panel5;
+                EditEdit6->Font->Name = "Arial";
+                EditEdit6->Width = 400;
+                EditEdit6->Height = 18;
+                EditEdit6->Left = 80;
+                EditEdit6->Top = 103;
+                EditEdit6->Font->Size = 18;
+                EditEdit6->Enabled = true;
+
+                Label9 = new TLabel(this);
+                Label9->Parent = Panel5;
+                Label9->Font->Name = "Arial Black";
+                Label9->Caption = "№ телефона";
+                Label9->Font->Size = 18;
+                Label9->Left = 10;
+                Label9->Top = 151;
+
+                EditEdit7 = new TEdit(this);
+                EditEdit7->Parent = Panel5;
+                EditEdit7->Font->Name = "Arial";
+                EditEdit7->Width = 290;
+                EditEdit7->Height = 18;
+                EditEdit7->Left = 190;
+                EditEdit7->Top = 150;
+                EditEdit7->Font->Size = 18;
+
+                Label10 = new TLabel(this);
+                Label10->Parent = Panel5;
+                Label10->Font->Name = "Arial Black";
+                Label10->Caption = "№ строки";
+                Label10->Font->Size = 18;
+                Label10->Left = 10;
+                Label10->Top = 198;
+
+                EditEdit8 = new TEdit(this);
+                EditEdit8->Parent = Panel5;
+                EditEdit8->Font->Name = "Arial";
+                EditEdit8->Width = 290;
+                EditEdit8->Height = 18;
+                EditEdit8->Left = 190;
+                EditEdit8->Top = 198;
+                EditEdit8->Font->Size = 18;
+                EditEdit8->Enabled = true;
+
+                Button12 = new TBitBtn(this);
+                Button12->Parent = Form3;
+                Button12->Font->Name = "Arial Black";
+                Button12->Font->Size = 18;
+                Button12->Caption = "ОК";
+                Button12->Height = 45;
+                Button12->Width = 150;
+                Button12->Left = 330;
+                Button12->Top = 252;
+                Button12->OnClick = Button12Click;
+
+                Label11 = new TLabel(this);
+                Label11->Parent = Form3;
+                Label11->Font->Name = "Arial Black";
+                Label11->Caption = "№ строки";
+                Label11->Font->Size = 18;
+                Label11->Left = 10;
+                Label11->Top = 255;
+
+                Edit9 = new TEdit(this);
+                Edit9->Parent = Form3;
+                Edit9->Font->Name = "Arial";
+                Edit9->Width = 35;
+                Edit9->Height = 18;
+                Edit9->Left = 156;
+                Edit9->Top = 257;
+                Edit9->Font->Size = 18;
+                Edit9->Enabled = true;
+                Edit9->OnChange = Edit9Change;
+        }
+}
+
+void __fastcall TForm1::Edit9Change(TObject *Sender)
+{
+        if (Edit1->Text == "" || Edit1->Text == " ")
+        {
+                return;
+        }
+
+        TEdit *Edit1 = dynamic_cast<TEdit*>(Sender);
+        AnsiString searchRows = Edit1->Text;
+        int rowIndex = StrToIntDef(searchRows, -1);
+
+        if (rowIndex >= 1 && rowIndex < StringGrid1->RowCount)
+        {
+                for (int i = 0; i < StringGrid1->ColCount; i++)
+                {
+                        switch (i)
+                        {
+                        case 0:
+                                EditEdit4->Text = StringGrid1->Cells[i][rowIndex];
+                                break;
+                        case 1:
+                                EditEdit5->Text = StringGrid1->Cells[i][rowIndex];
+                                break;
+                        case 2:
+                                EditEdit6->Text = StringGrid1->Cells[i][rowIndex];
+                                break;
+                        case 3:
+                                EditEdit7->Text = StringGrid1->Cells[i][rowIndex];
+                                break;
+                        case 4:
+                                EditEdit8->Text = StringGrid1->Cells[i][rowIndex];
+                                break;
+                        default:
+                                break;
+                        }
+                }
+        }
+}
+
+void __fastcall TForm1::Button12Click(TObject *Sender)
+{
+        if (Edit9->Text == "" || Edit9->Text == " ")
+        {
+                return;
+        }
+
+        AnsiString searchRows = Edit9->Text;
+        unsigned int IntSearchRows = StrToInt(searchRows);
+
+        AnsiString fullName = EditEdit4->Text;
+        AnsiString dateBirth = EditEdit5->Text;
+        AnsiString mail = EditEdit6->Text;
+        AnsiString phone = EditEdit7->Text;
+        AnsiString number = EditEdit8->Text;
+
+        StringGrid1->Cells[0][IntSearchRows] = fullName;
+        StringGrid1->Cells[0+1][IntSearchRows] = dateBirth;
+        StringGrid1->Cells[0+2][IntSearchRows] = mail;
+        StringGrid1->Cells[0+3][IntSearchRows] = phone;
+        StringGrid1->Cells[0+4][IntSearchRows] = number;
+
+        Form3->Close();
+}
+
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+        if (Panel6->Visible == true)
+        {
+                Panel6->Visible = false;
+        }
+
+        if (StringGrid1->Visible == true)
+        {
+                for (int i = 1; i < StringGrid1->RowCount - 1; i++)
+                {
+                        for (int j = 1; j < StringGrid1->RowCount - i; j++)
+                        {
+                                if (StringGrid1->Cells[4][j] > StringGrid1->Cells[4][j + 1])
+                                {
+                                        for (int k = 0; k < StringGrid1->ColCount; k++)
+                                        {
+                                                AnsiString temp = StringGrid1->Cells[k][j];
+                                                StringGrid1->Cells[k][j] = StringGrid1->Cells[k][j + 1];
+                                                StringGrid1->Cells[k][j + 1] = temp;
+                                        }
+                                }
+                        }
+                }
+        }
+}
+
+void __fastcall TForm1::Button5Click(TObject *Sender)
+{
+        if (Panel6->Visible == true)
+        {
+                Panel6->Visible = false;
+        }
+
+        if (SaveDialog1->Execute())
+        {
+                std::ofstream outFile;
+                outFile.open(SaveDialog1->FileName.c_str());
+
+                for (int i = 1; i < StringGrid1->RowCount; i++)
+                {
+                        for (int j = 0; j < StringGrid1->ColCount; j++)
+                        {
+                                outFile << StringGrid1->Cells[j][i].c_str() << "\n";
+                        }
+        }
+        outFile.close();
+        }
+}
+
+void __fastcall TForm1::Button6Click(TObject *Sender)
+{
+        if (Panel6->Visible == true)
+        {
+                Panel6->Visible = false;
+        }
+
+        if (OpenDialog1->Execute())
+        {
+                std::ifstream inFile;
+                inFile.open(OpenDialog1->FileName.c_str());
+                std::string data;
+
+                if (inFile.is_open())
+                {
+                        if (StringGrid1->RowCount > 1)
+                        {
+                                for (int j = 1; j < StringGrid1->RowCount; j++)
+                                {
+                                        for (int i = 0; i < StringGrid1->ColCount; i++)
+                                        {
+                                                if (!getline(inFile, data))
+                                                {
+                                                        break;
+                                                }
+                                                StringGrid1->Cells[i][j] = data.c_str();
+
+                                        }
+                                }
+                                inFile.close();
+                        }
+
+                        else if (StringGrid1->RowCount <= 1)
+                        {
+                                StringGrid1->RowCount+= 6;
+
+                                for (int j = 1; j < StringGrid1->RowCount; j++)
+                                {
+                                        for (int i = 0; i < StringGrid1->ColCount; i++)
+                                        {
+                                                if (!getline(inFile, data))
+                                                {
+                                                        break;
+                                                }
+                                                StringGrid1->Cells[i][j] = data.c_str();
+
+                                        }
+                                }
+                                inFile.close();
+                        }
+                }
+
+                else
+                {
+                        ShowMessage("Ошибка открытия файла!");
+                }
+        }
+}
+
+void __fastcall TForm1::Button10Click(TObject *Sender)
+{
+        if (StringGrid1->Visible == true)
+        {
+                Panel6->Visible = true;
+        }
+}
+
+void __fastcall TForm1::BitBtn3Click(TObject *Sender)
+{
+        int RowDelete;
+
+        if (TryStrToInt(DeleteEdit->Text, RowDelete)) // Полезная штука
+        {
+                if (RowDelete >= 1 && RowDelete <= StringGrid1->RowCount)
+                {
+                        StringGrid1->Rows[RowDelete]->Clear();
+
+                        for (int i = RowDelete; i < StringGrid1->RowCount - 1; i++)
+                        {
+                                for (int j = 0; j < StringGrid1->ColCount; j++)
+                                {
+                                        StringGrid1->Cells[j][i] = StringGrid1->Cells[j][i + 1];
+                                }
+                        }
+                        StringGrid1->RowCount = StringGrid1->RowCount - 1;
+
+                        for (int i = RowDelete; i < StringGrid1->RowCount; ++i)
+                        {
+                                StringGrid1->Cells[4][i] = i;
+                        }
+                }
+        }
+}
+
+void __fastcall TForm1::Button9Click(TObject *Sender)
+{
+        AnsiString search = Edit3->Text;
+        int number;
+
+        if (search == "")
+        {
+                return;
+        }
+
+        for (int i = 0; i < StringGrid1->ColCount; i++)
+        {
+                for (int j = 1; j < StringGrid1->RowCount; j++)
+                {
+                        if (StringGrid1->Cells[i][j] == search)
+                        {
+                                number = j;
+
+                                Form4 = new TForm(this);
+                                Form4->Show();
+                                Form4->BorderStyle = bsDialog;
+                                Form4->Caption = "Поиск строки";
+                                Form4->Width = 520;
+                                Form4->Height = 340;
+                                Form4->Left = 450;
+                                Form4->Top = 30;
+                                Form4->Color = clWindow;
+                                Form4->Enabled = true;
+
+                                Label6 = new TLabel(this);
+                                Label6->Parent = Form4;
+                                Label6->Font->Name = "Arial Black";
+                                Label6->Caption = "ФИО";
+                                Label6->Font->Size = 18;
+                                Label6->Left = 10;
+                                Label6->Top = 10;
+
+                                Edit4 = new TEdit(this);
+                                Edit4->Parent = Form4;
+                                Edit4->Font->Name = "Arial";
+                                Edit4->Width = 400;
+                                Edit4->Height = 18;
+                                Edit4->Left = 80;
+                                Edit4->Top = 8;
+                                Edit4->Font->Size = 18;
+                                Edit4->Enabled = true;
+                                Edit4->Text = StringGrid1->Cells[0][number];
+
+                                Label7 = new TLabel(this);
+                                Label7->Parent = Form4;
+                                Label7->Font->Name = "Arial Black";
+                                Label7->Caption = "Дата";
+                                Label7->Font->Size = 18;
+                                Label7->Left = 10;
+                                Label7->Top = 57;
+
+                                Edit5 = new TEdit(this);
+                                Edit5->Parent = Form4;
+                                Edit5->Font->Name = "Arial";
+                                Edit5->Width = 400;
+                                Edit5->Height = 18;
+                                Edit5->Left = 80;
+                                Edit5->Top = 55;
+                                Edit5->Font->Size = 18;
+                                Edit5->Enabled = true;
+                                Edit5->Text = StringGrid1->Cells[1][number];
+
+                                Label8 = new TLabel(this);
+                                Label8->Parent = Form4;
+                                Label8->Font->Name = "Arial Black";
+                                Label8->Caption = "Mail";
+                                Label8->Font->Size = 18;
+                                Label8->Left = 10;
+                                Label8->Top = 104;
+
+                                Edit6 = new TEdit(this);
+                                Edit6->Parent = Form4;
+                                Edit6->Font->Name = "Arial";
+                                Edit6->Width = 400;
+                                Edit6->Height = 18;
+                                Edit6->Left = 80;
+                                Edit6->Top = 103;
+                                Edit6->Font->Size = 18;
+                                Edit6->Enabled = true;
+                                Edit6->Text = StringGrid1->Cells[2][number];
+
+                                Label9 = new TLabel(this);
+                                Label9->Parent = Form4;
+                                Label9->Font->Name = "Arial Black";
+                                Label9->Caption = "№ телефона";
+                                Label9->Font->Size = 18;
+                                Label9->Left = 10;
+                                Label9->Top = 151;
+
+                                Edit7 = new TEdit(this);
+                                Edit7->Parent = Form4;
+                                Edit7->Font->Name = "Arial";
+                                Edit7->Width = 290;
+                                Edit7->Height = 18;
+                                Edit7->Left = 190;
+                                Edit7->Top = 150;
+                                Edit7->Font->Size = 18;
+                                Edit7->Text = StringGrid1->Cells[3][number];
+
+                                Label10 = new TLabel(this);
+                                Label10->Parent = Form4;
+                                Label10->Font->Name = "Arial Black";
+                                Label10->Caption = "№ строки";
+                                Label10->Font->Size = 18;
+                                Label10->Left = 10;
+                                Label10->Top = 198;
+
+                                Edit8 = new TEdit(this);
+                                Edit8->Parent = Form4;
+                                Edit8->Font->Name = "Arial";
+                                Edit8->Width = 290;
+                                Edit8->Height = 18;
+                                Edit8->Left = 190;
+                                Edit8->Top = 198;
+                                Edit8->Font->Size = 18;
+                                Edit8->Enabled = true;
+                                Edit8->Text = StringGrid1->Cells[4][number];
+                        }
+                }
+                break;
+        }
+}
+
+
+
